@@ -1,4 +1,4 @@
-package easygin
+package sample
 
 import (
 	"fmt"
@@ -7,11 +7,12 @@ import (
 	"syscall"
 	"testing"
 
+	easygin "github.com/ajdwfnhaps/easy-gin"
 	"github.com/ajdwfnhaps/easy-gin/conf"
 )
 
 func TestEasyGin(t *testing.T) {
-	if err := UseEasyGin(func(opt *conf.Config) {
+	if err := easygin.UseEasyGin(func(opt *conf.Config) {
 		opt.HTTP.Port = 8888
 		opt.HTTP.ShutdownTimeout = 60
 	}); err != nil {

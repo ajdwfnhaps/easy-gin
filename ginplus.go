@@ -4,6 +4,7 @@ import (
 	"fmt"
 
 	"github.com/ajdwfnhaps/easy-gin/conf"
+	mw "github.com/ajdwfnhaps/easy-gin/middleware"
 	"github.com/gin-gonic/gin"
 )
 
@@ -36,17 +37,21 @@ func UseEasyGin(optFunc ConfigFunc) error {
 		optFunc(&GlobalGinOption)
 	}
 
-	r := gin.Default()
+	r := gin.New()
 
-	r.GET("/ping", func(c *gin.Context) {
-		c.JSON(200, gin.H{
-			"message": "pong",
+	r.Use(mw.LoggerMiddleware(), gin.Recovery())
+
+	if GlobalGinOption.RunMode == "debug" {
+		r.GET("/ping", func(c *gin.Context) {
+			c.JSON(200, gin.H{
+				"message": "pong",
+			})
 		})
-	})
+	}
 
 	addr := fmt.Sprintf("%s:%d", GlobalGinOption.HTTP.Host, GlobalGinOption.HTTP.Port)
 
-	r.Run(addr)
+	go r.Run(addr)
 
 	return nil
 }
