@@ -43,8 +43,8 @@ func handleSignal() {
 详细可参考[测试用例](sample/ginplus_test.go)
 
 ### todo列表：
-. response封装
-. 日志中间件完善(easy-logrus)
-. auth中间件开发
-. 集成swagger
-. 提供统一注册路由方法等。。。
+- response封装
+- 日志中间件完善(easy-logrus)
+- auth中间件开发
+- 集成swagger
+- 提供统一注册路由方法等。。。
