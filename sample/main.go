@@ -7,16 +7,13 @@ import (
 	"syscall"
 
 	easygin "github.com/ajdwfnhaps/easy-gin"
-	"github.com/ajdwfnhaps/easy-logrus/logger"
-)
-
-var (
-	configPath string
 )
 
 func main() {
 
 	r := easygin.New("conf/config.toml")
+
+	UseSwagger(r.Gin)
 	r.Run()
 
 	handleSignal()
@@ -28,11 +25,5 @@ func handleSignal() {
 	select {
 	case <-c:
 		fmt.Println("服务退出")
-	}
-}
-
-func initLog() {
-	if err := logger.UseLogrusWithConfig(configPath); err != nil {
-		panic("logger init failed, " + err.Error())
 	}
 }
