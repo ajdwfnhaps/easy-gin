@@ -12,10 +12,11 @@
 # Output of the go coverage tool, specifically when used with LiteIDE
 *.out
 /.vscode
-/sample/logs
+/sample/log*
 __debug_bin
 tmp
 log
+logs
 
 # Visual Studio 2015 cache/options directory
 .vs/

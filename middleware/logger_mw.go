@@ -1,10 +1,8 @@
 package middleware
 
 import (
-	"fmt"
 	"time"
 
-	"github.com/ajdwfnhaps/easy-logrus/conf"
 	"github.com/ajdwfnhaps/easy-logrus/logger"
 	"github.com/gin-gonic/gin"
 	"github.com/sirupsen/logrus"
@@ -14,15 +12,15 @@ import (
 func LoggerMiddleware() gin.HandlerFunc {
 
 	//-----------初始化日志组件
-	if err := logger.UseLogrus(func(c *conf.LogOption) {
+	// if err := logger.UseLogrus(func(c *conf.LogOption) {
 
-		c.AppName = "Go应用002"
-		c.LogFileRotationTime = 60
-		c.LogFilePathFormat = ".%Y-%m-%d.log"
+	// 	c.AppName = "Go应用002"
+	// 	c.LogFileRotationTime = 60
+	// 	c.LogFilePathFormat = ".%Y-%m-%d.log"
 
-	}); err != nil {
-		fmt.Println(err)
-	}
+	// }); err != nil {
+	// 	fmt.Println(err)
+	// }
 
 	logger := logger.CreateLogger()
 

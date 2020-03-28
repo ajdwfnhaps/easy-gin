@@ -44,6 +44,7 @@ type Config struct {
 	HTTP    HTTP    `toml:"http"`
 	Log     Log     `toml:"log"`
 	CORS    CORS    `toml:"cors"`
+	Path    string
 }
 
 // Swagger 接口文档配置

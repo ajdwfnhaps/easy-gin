@@ -1,23 +1,23 @@
-package sample
+package main
 
 import (
 	"fmt"
 	"os"
 	"os/signal"
 	"syscall"
-	"testing"
 
 	easygin "github.com/ajdwfnhaps/easy-gin"
-	"github.com/ajdwfnhaps/easy-gin/conf"
+	"github.com/ajdwfnhaps/easy-logrus/logger"
 )
 
-func TestEasyGin(t *testing.T) {
-	if err := easygin.UseEasyGin(func(opt *conf.Config) {
-		opt.HTTP.Port = 8888
-		opt.HTTP.ShutdownTimeout = 60
-	}); err != nil {
-		t.Error(err)
-	}
+var (
+	configPath string
+)
+
+func main() {
+
+	r := easygin.New("conf/config.toml")
+	r.Run()
 
 	handleSignal()
 }
@@ -28,5 +28,11 @@ func handleSignal() {
 	select {
 	case <-c:
 		fmt.Println("服务退出")
+	}
+}
+
+func initLog() {
+	if err := logger.UseLogrusWithConfig(configPath); err != nil {
+		panic("logger init failed, " + err.Error())
 	}
 }

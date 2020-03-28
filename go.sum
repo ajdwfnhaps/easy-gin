@@ -2,6 +2,11 @@ github.com/BurntSushi/toml v0.3.1 h1:WXkYYl6Yr3qBf1K79EBnL4mak0OimBfB0XUf9Vl28OQ
 github.com/BurntSushi/toml v0.3.1/go.mod h1:xHWCNGjB5oqiDr8zfno3MHue2Ht5sIBksp03qcyfWMU=
 github.com/ajdwfnhaps/easy-logrus v0.0.0-20200328103107-18cc27044609 h1:Tj3wakGXA6Ic5026a6B4ntVg58LCmltZZ7K5DMgQfJA=
 github.com/ajdwfnhaps/easy-logrus v0.0.0-20200328103107-18cc27044609/go.mod h1:AcM1eh+gVLxv+6Q06tcG5FbhPCjUCPoue3OZpnBZ7FE=
+github.com/ajdwfnhaps/easy-logrus v0.0.0-20200328103647-f8c23ca77255 h1:CNNMCf5fJIufNdEAVCPWVnnI7orzqUefOHMhPUahftg=
+github.com/ajdwfnhaps/easy-tool v0.0.0-20200328163444-9c5d528367e4 h1:3ScY+t+gB2pA6mCiTMAV8L5Oa7u0zSaoy40VVfuYMKY=
+github.com/ajdwfnhaps/easy-tool v0.0.0-20200328163444-9c5d528367e4/go.mod h1:CiOwsSwKUM+yFfUh1tOwh/MW/lDdvkQhtkCNctXvLkE=
+github.com/ajdwfnhaps/easy-utils v0.0.0-20200328151939-e02a1de49563 h1:vAXxHsxifzQf9Flg8DMS4Femyqz1ONgwxfl4g0LtEzw=
+github.com/ajdwfnhaps/easy-utils v0.0.0-20200328151939-e02a1de49563/go.mod h1:FAogdGWUqVjQMQCwgpy7ENqvAIE8YqfviqBONRc1UlE=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/gin-contrib/sse v0.1.0 h1:Y/yl/+YNO8GZSjAhjMsSuLt29uWRFHdHYUb5lYOV9qE=
