@@ -5,6 +5,9 @@ gin使用封装,简单易用,方便在项目中集成应用
 3. 配置方便
 4. 更多功能计划后续集成，以方便使用（常用web开发：orm, redis, mongodb, jwt, auth2等）
 
+### 在线预览地址 
+[easy-gin-demo](http://47.115.33.58:8078/swagger/index.html)
+
 ### 使用介绍
 ```
 package main
@@ -161,6 +164,15 @@ max_age = 7200
 **运行效果如下图：**
 ![text](https://github.com/ajdwfnhaps/easy-gin/blob/master/pics/swagger.png)
 
+### docker 部署
+1. 执行build-linux-amd64.bat,可在windows系统下交叉编译发布linux amd64架构的二进制文件
+2. 上传的相应linux服务器相应目录
+3. docker run
+
+```
+docker run --privileged=true --name easy-gin-demo -p 8078:8078 -v /home/mwr/go-prj/easy-gin-demo:/app -w /app/  -e TZ='Asia/Shanghai' -d alpine:latest /app/./easy-gin
+```
+
 ### todo列表：
 - docker部署线上demo
 - response封装
@@ -179,3 +191,4 @@ max_age = 7200
 - mqtt包
 - tcp server包
 - 服务治理相关包
+- Golang学习文档整理.bk

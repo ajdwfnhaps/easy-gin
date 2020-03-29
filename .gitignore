@@ -13,6 +13,7 @@
 *.out
 /.vscode
 /sample/log*
+/sample/easy-gin
 __debug_bin
 tmp
 log
