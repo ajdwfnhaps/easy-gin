@@ -1,4 +1,13 @@
 definitions:
+  response.Response:
+    properties:
+      code:
+        type: integer
+      data:
+        type: object
+      msg:
+        type: string
+    type: object
   schema.Demo:
     properties:
       code:
@@ -27,16 +36,20 @@ definitions:
     - name
     - status
     type: object
-  schema.Result:
+  schema.DemoQueryParam:
     properties:
-      data:
-        type: object
-      msg:
+      code:
+        description: 编号
         type: string
-      success:
-        type: boolean
-      title:
+      like_code:
+        description: 编号(模糊查询)
         type: string
+      like_name:
+        description: 名称(模糊查询)
+        type: string
+      status:
+        description: 状态(1:启用 2:停用)
+        type: integer
     type: object
 info:
   contact: {}
@@ -60,7 +73,7 @@ paths:
         "200":
           description: OK
           schema:
-            $ref: '#/definitions/schema.Result'
+            $ref: '#/definitions/response.Response'
       summary: 创建单个demo
       tags:
       - Demo
@@ -77,8 +90,26 @@ paths:
         "200":
           description: OK
           schema:
-            $ref: '#/definitions/schema.Demo'
+            $ref: '#/definitions/response.Response'
       summary: 查询获取单个demo数据
+      tags:
+      - Demo
+  /api/v1/demos/list:
+    post:
+      description: 向你说描述
+      parameters:
+      - description: 查询参数
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/schema.DemoQueryParam'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.Response'
+      summary: 查询获取demo分页列表
       tags:
       - Demo
 swagger: "2.0"

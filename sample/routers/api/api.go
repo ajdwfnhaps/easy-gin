@@ -15,7 +15,7 @@ func RouterHanlder(app *gin.Engine) error {
 		gDemo := v1.Group("demos")
 		{
 			cDemo := NewDemoController()
-			// gDemo.GET("", cDemo.Query)
+			gDemo.POST("list", cDemo.Query)
 			gDemo.GET(":id", cDemo.Get)
 			gDemo.POST("", cDemo.Create)
 			// gDemo.PUT(":id", cDemo.Update)

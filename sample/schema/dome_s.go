@@ -1,6 +1,8 @@
 package schema
 
-import "time"
+import (
+	"time"
+)
 
 // Demo demo对象
 type Demo struct {
@@ -15,19 +17,8 @@ type Demo struct {
 
 // DemoQueryParam 查询条件
 type DemoQueryParam struct {
-	Code     string // 编号
-	Status   int    // 状态(1:启用 2:停用)
-	LikeCode string // 编号(模糊查询)
-	LikeName string // 名称(模糊查询)
-}
-
-// DemoQueryOptions demo对象查询可选参数项
-type DemoQueryOptions struct {
-	PageParam *PaginationParam // 分页参数
-}
-
-// DemoQueryResult demo对象查询结果
-type DemoQueryResult struct {
-	Data       []*Demo
-	PageResult *PaginationResult
+	Code     string `json:"code,omitempty"`      // 编号
+	Status   int    `json:"status,omitempty"`    // 状态(1:启用 2:停用)
+	LikeCode string `json:"like_code,omitempty"` // 编号(模糊查询)
+	LikeName string `json:"like_name,omitempty"` // 名称(模糊查询)
 }
