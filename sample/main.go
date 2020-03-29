@@ -7,15 +7,23 @@ import (
 	"syscall"
 
 	easygin "github.com/ajdwfnhaps/easy-gin"
+	"github.com/ajdwfnhaps/easy-gin/sample/routers/api"
 )
 
 func main() {
 
+	//创建应用程序 使用配置文件
 	r := easygin.New("conf/config.toml")
-
+	//使用swagger
 	r.UseSwagger(SetSwaggerInfo)
+
+	//注册路由
+	r.RegisterRouter(api.RouterHanlder)
+
+	//启动
 	r.Run()
 
+	//处理退出信号
 	handleSignal()
 }
 

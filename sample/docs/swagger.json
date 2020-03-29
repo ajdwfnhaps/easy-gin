@@ -4,5 +4,123 @@
         "contact": {},
         "license": {}
     },
-    "paths": {}
+    "paths": {
+        "/api/v1/demos": {
+            "post": {
+                "description": "向你说描述",
+                "tags": [
+                    "Demo"
+                ],
+                "summary": "创建单个demo",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Bearer 用户令牌",
+                        "name": "Authorization",
+                        "in": "header"
+                    },
+                    {
+                        "description": "创建数据",
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/schema.Demo"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/schema.Result"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/demos/{id}": {
+            "get": {
+                "description": "向你说描述",
+                "tags": [
+                    "Demo"
+                ],
+                "summary": "查询获取单个demo数据",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "id",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/schema.Demo"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "schema.Demo": {
+            "type": "object",
+            "required": [
+                "code",
+                "name",
+                "status"
+            ],
+            "properties": {
+                "code": {
+                    "description": "编号",
+                    "type": "string"
+                },
+                "created_at": {
+                    "description": "创建时间",
+                    "type": "string"
+                },
+                "creator": {
+                    "description": "创建者",
+                    "type": "string"
+                },
+                "memo": {
+                    "description": "备注",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "名称",
+                    "type": "string"
+                },
+                "record_id": {
+                    "description": "记录ID",
+                    "type": "string"
+                },
+                "status": {
+                    "description": "状态(1:启用 2:停用)",
+                    "type": "integer"
+                }
+            }
+        },
+        "schema.Result": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "type": "object"
+                },
+                "msg": {
+                    "type": "string"
+                },
+                "success": {
+                    "type": "boolean"
+                },
+                "title": {
+                    "type": "string"
+                }
+            }
+        }
+    }
 }

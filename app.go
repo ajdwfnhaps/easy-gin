@@ -63,6 +63,7 @@ func (c *App) Run() {
 		c.Logger.Infof("easy-gin启动，版本号：%s，进程号：%d", c.Opts.Version, os.Getpid())
 	}
 
+	//添加测试路由
 	if c.Opts.RunMode == "debug" {
 		c.Gin.GET("/ping", func(c *gin.Context) {
 			c.JSON(200, gin.H{
@@ -81,5 +82,16 @@ func (c *App) UseSwagger(setSwagInfo func()) *App {
 		setSwagInfo()
 	}
 	c.Gin.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
+	return c
+}
+
+//RegisterRouter 注册路由
+func (c *App) RegisterRouter(routerHanlder func(*gin.Engine) error) *App {
+
+	if routerHanlder != nil {
+		if err := routerHanlder(c.Gin); err != nil {
+			panic(err)
+		}
+	}
 	return c
 }
