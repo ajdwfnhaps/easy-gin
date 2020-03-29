@@ -1,5 +1,9 @@
 # easy-gin
-gin插件封装,简单易用,方便在项目中集成应用
+gin使用封装,简单易用,方便在项目中集成应用
+1. 集成easy-logrus
+2. 集成swagger
+3. 配置方便
+4. 更多功能计划后续集成，以方便使用（常用web开发：orm, redis, mongodb, jwt, auth2等）
 
 ### 使用介绍
 ```
@@ -158,8 +162,20 @@ max_age = 7200
 ![text](https://github.com/ajdwfnhaps/easy-gin/blob/master/pics/swagger.png)
 
 ### todo列表：
+- docker部署线上demo
 - response封装
 - 日志中间件完善(easy-logrus)
+- 跨域配置
 - auth中间件开发
 - 集成swagger
 - 提供统一注册路由方法等。。。
+- orm集成(gorm, xorm)
+- nosql集成(redis, mongodb)
+- mq使用
+
+### 扩展
+- easy-logrus包
+- easy-tool包
+- mqtt包
+- tcp server包
+- 服务治理相关包
