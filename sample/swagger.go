@@ -4,14 +4,10 @@ import (
 	"github.com/ajdwfnhaps/easy-gin/sample/docs"
 
 	"github.com/ajdwfnhaps/easy-gin/conf"
-
-	"github.com/gin-gonic/gin"
-	swaggerFiles "github.com/swaggo/files"
-	ginSwagger "github.com/swaggo/gin-swagger"
 )
 
-// UseSwagger 使用Swagger文档
-func UseSwagger(app *gin.Engine) {
+// SetSwaggerInfo 设置SwaggerInfo
+func SetSwaggerInfo() {
 	cfg := conf.Global()
 	swag := cfg.Swagger
 
@@ -26,5 +22,4 @@ func UseSwagger(app *gin.Engine) {
 	docs.SwaggerInfo.Host = swag.Host
 	docs.SwaggerInfo.BasePath = swag.BasePath
 	docs.SwaggerInfo.Schemes = swag.Schemes
-	app.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 }

@@ -13,7 +13,7 @@ func main() {
 
 	r := easygin.New("conf/config.toml")
 
-	UseSwagger(r.Gin)
+	r.UseSwagger(SetSwaggerInfo)
 	r.Run()
 
 	handleSignal()

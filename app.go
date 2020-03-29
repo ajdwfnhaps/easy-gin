@@ -8,6 +8,8 @@ import (
 	mw "github.com/ajdwfnhaps/easy-gin/middleware"
 	"github.com/ajdwfnhaps/easy-logrus/logger"
 	"github.com/gin-gonic/gin"
+	ginSwagger "github.com/swaggo/gin-swagger"
+	"github.com/swaggo/gin-swagger/swaggerFiles"
 )
 
 //App 应用程序
@@ -71,4 +73,13 @@ func (c *App) Run() {
 
 	addr := fmt.Sprintf("%s:%d", c.Opts.HTTP.Host, c.Opts.HTTP.Port)
 	go c.Gin.Run(addr)
+}
+
+//UseSwagger 使用swagger
+func (c *App) UseSwagger(setSwagInfo func()) *App {
+	if setSwagInfo != nil {
+		setSwagInfo()
+	}
+	c.Gin.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
+	return c
 }
