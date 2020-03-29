@@ -154,6 +154,9 @@ max_age = 7200
 
 详细可参考[测试用例](sample/main.go)
 
+**运行效果如下图：**
+![text](https://github.com/ajdwfnhaps/easy-gin/blob/master/pics/swagger.png)
+
 ### todo列表：
 - response封装
 - 日志中间件完善(easy-logrus)
