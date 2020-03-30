@@ -40,19 +40,16 @@ func (c *App) WithConf(fPath string) *App {
 	c.ConfPath = fPath
 	conf.Init(fPath)
 	c.Opts = conf.Global()
-	if c.Opts.Log.AppNo != 0 {
-		c = c.withLogrusConf()
-	}
 	return c
 }
 
-//withLogrusConf 使用logrus日志组件
-func (c *App) withLogrusConf() *App {
+//UseLogrusConf 使用logrus日志组件
+func (c *App) UseLogrusConf(skippers ...mw.SkipperFunc) *App {
 	if err := logger.UseLogrusWithConfig(c.ConfPath); err != nil {
 		panic("logger init failed, " + err.Error())
 	}
 	c.isUseLog = true
-	c.Gin.Use(mw.LoggerMiddleware())
+	c.Gin.Use(mw.LoggerMiddleware(skippers...))
 	return c
 }
 

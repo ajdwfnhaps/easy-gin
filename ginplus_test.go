@@ -6,6 +6,7 @@ import (
 	"os/signal"
 	"syscall"
 	"testing"
+	"time"
 
 	"github.com/ajdwfnhaps/easy-gin/conf"
 	"github.com/ajdwfnhaps/easy-logrus/logger"
@@ -51,4 +52,16 @@ func initLog() {
 	if err := logger.UseLogrusWithConfig(configPath); err != nil {
 		panic("logger init failed, " + err.Error())
 	}
+}
+
+func TestStartCac(t *testing.T) {
+	t1 := time.Now() // get current time
+	//logic handlers
+	for i := 0; i < 1000; i++ {
+		fmt.Print("*")
+	}
+	elapsed := time.Since(t1)
+	a := elapsed.Milliseconds()
+	fmt.Println(a)
+	fmt.Println("App elapsed: ", elapsed)
 }

@@ -25,6 +25,7 @@
                         "in": "body",
                         "required": true,
                         "schema": {
+                            "type": "object",
                             "$ref": "#/definitions/schema.Demo"
                         }
                     }
@@ -53,6 +54,7 @@
                         "in": "body",
                         "required": true,
                         "schema": {
+                            "type": "object",
                             "$ref": "#/definitions/schema.DemoQueryParam"
                         }
                     }

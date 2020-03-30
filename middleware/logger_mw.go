@@ -9,30 +9,22 @@ import (
 )
 
 //LoggerMiddleware 日志中间件
-func LoggerMiddleware() gin.HandlerFunc {
-
-	//-----------初始化日志组件
-	// if err := logger.UseLogrus(func(c *conf.LogOption) {
-
-	// 	c.AppName = "Go应用002"
-	// 	c.LogFileRotationTime = 60
-	// 	c.LogFilePathFormat = ".%Y-%m-%d.log"
-
-	// }); err != nil {
-	// 	fmt.Println(err)
-	// }
-
-	logger := logger.CreateLogger()
+func LoggerMiddleware(skippers ...SkipperFunc) gin.HandlerFunc {
 
 	return func(c *gin.Context) {
+		if SkipHandler(c, skippers...) {
+			c.Next()
+			return
+		}
+
+		logger := logger.CreateLogger()
+
 		//开始时间
 		startTime := time.Now()
 		//处理请求
 		c.Next()
-		//结束时间
-		endTime := time.Now()
 		// 执行时间
-		latencyTime := endTime.Sub(startTime)
+		latencyTime := time.Since(startTime)
 		//请求方式
 		reqMethod := c.Request.Method
 		//请求路由
@@ -45,7 +37,7 @@ func LoggerMiddleware() gin.HandlerFunc {
 		// 日志格式
 		logger.WithFields(logrus.Fields{
 			"status_code":  statusCode,
-			"latency_time": latencyTime,
+			"elapsed_time": latencyTime.Milliseconds(),
 			"client_ip":    clientIP,
 			"req_method":   reqMethod,
 			"req_uri":      reqURL,
