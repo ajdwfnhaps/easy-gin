@@ -5,7 +5,7 @@ version="1.0.0"
 run_mode = "debug"
 
 # 静态站点目录(也可以启动服务时使用-www指定)
-www = ""
+www = "./wwwroot"
 
 # http配置
 [http]
@@ -62,8 +62,8 @@ schemes=["http"]
 
 # 跨域请求
 [cors]
-# 是否启用
-enable = false
+## 是否启用
+# enable = false
 # 允许跨域请求的域名列表(*表示全部允许)
 allow_origins = ["*"]
 # 允许跨域请求的请求方式列表

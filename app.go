@@ -40,6 +40,16 @@ func Default(fPath string) *App {
 	app := New(fPath)
 	app.Gin.NoMethod(mw.NoMethodHandler())
 	app.Gin.NoRoute(mw.NoRouteHandler())
+
+	//添加测试路由
+	if app.Opts.RunMode == "debug" {
+		app.Gin.GET("/api/ping", func(c *gin.Context) {
+			c.JSON(200, gin.H{
+				"message": "pong",
+			})
+		})
+	}
+
 	return app
 }
 
@@ -51,7 +61,7 @@ func (c *App) WithConf(fPath string) *App {
 	return c
 }
 
-//UseLogrusConf 使用logrus日志组件
+// UseLogrusConf 使用logrus日志组件
 func (c *App) UseLogrusConf(skippers ...mw.SkipperFunc) *App {
 	if err := logger.UseLogrusWithConfig(c.ConfPath); err != nil {
 		panic("logger init failed, " + err.Error())
@@ -61,20 +71,23 @@ func (c *App) UseLogrusConf(skippers ...mw.SkipperFunc) *App {
 	return c
 }
 
-//Run 启动应用
+// UseCors 使用跨域请求中间件
+func (c *App) UseCors() *App {
+	c.Gin.Use(mw.CORSMiddleware())
+	return c
+}
+
+// UseWWWRoot 使用静态站点中间件
+func (c *App) UseWWWRoot() *App {
+	c.Gin.Use(mw.WWWMiddleware(c.Opts.WWW))
+	return c
+}
+
+// Run 启动应用
 func (c *App) Run() {
 	if c.isUseLog {
 		c.Logger = logger.CreateLogger()
 		c.Logger.Infof("easy-gin启动，版本号：%s，进程号：%d", c.Opts.Version, os.Getpid())
-	}
-
-	//添加测试路由
-	if c.Opts.RunMode == "debug" {
-		c.Gin.GET("/ping", func(c *gin.Context) {
-			c.JSON(200, gin.H{
-				"message": "pong",
-			})
-		})
 	}
 
 	addr := fmt.Sprintf("%s:%d", c.Opts.HTTP.Host, c.Opts.HTTP.Port)
