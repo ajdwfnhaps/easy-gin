@@ -45,6 +45,10 @@ log_file_max_age = 7
 log_file_rotation_time = 86400
 # 设置日志文件名规则
 log_file_path_format = ".%Y-%m-%d.log"
+# 是否记录http响应报文日志
+log_http_response = true
+# 是否记录http请求报文日志
+log_http_request = false
 
 # swagger文档
 [swagger]

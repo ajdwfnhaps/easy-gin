@@ -35,6 +35,14 @@ func New(fPath string) *App {
 	return app
 }
 
+//Default 默认配置应用
+func Default(fPath string) *App {
+	app := New(fPath)
+	app.Gin.NoMethod(mw.NoMethodHandler())
+	app.Gin.NoRoute(mw.NoRouteHandler())
+	return app
+}
+
 //WithConf 使用配置文件
 func (c *App) WithConf(fPath string) *App {
 	c.ConfPath = fPath

@@ -69,7 +69,6 @@ paths:
         required: true
         schema:
           $ref: '#/definitions/schema.Demo'
-          type: object
       responses:
         "200":
           description: OK
@@ -105,7 +104,6 @@ paths:
         required: true
         schema:
           $ref: '#/definitions/schema.DemoQueryParam'
-          type: object
       responses:
         "200":
           description: OK

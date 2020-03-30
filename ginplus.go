@@ -26,6 +26,10 @@ func init() {
 			Port:            8074,
 			ShutdownTimeout: 30,
 		},
+		Log: conf.Log{
+			LogHTTPResponse: true,
+			LogHTTPRequest:  false,
+		},
 	}
 }
 

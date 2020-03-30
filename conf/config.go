@@ -70,6 +70,8 @@ type Log struct {
 	DisableLineHook        bool   `toml:"disable_line_hook"`
 	MaxAge                 int    `toml:"log_file_max_age"`
 	RotationTime           int    `toml:"log_file_rotation_time"`
+	LogHTTPResponse        bool   `toml:"log_http_response"`
+	LogHTTPRequest         bool   `toml:"log_http_request"`
 }
 
 // HTTP http配置参数

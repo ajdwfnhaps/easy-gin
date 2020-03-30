@@ -3,8 +3,6 @@ package api
 import (
 	"time"
 
-	"github.com/ajdwfnhaps/easy-logrus/logger"
-
 	"github.com/ajdwfnhaps/easy-gin/response"
 	"github.com/ajdwfnhaps/easy-gin/sample/schema"
 	"github.com/gin-gonic/gin"
@@ -39,8 +37,6 @@ func (d *DemoController) Query(c *gin.Context) {
 		response.Err400Response(c, "解析请求参数发生错误:"+err.Error())
 		return
 	}
-
-	logger.CreateLogger().Info(param)
 
 	response.Page(c, &response.PagingList{
 		PageIndex:      1,

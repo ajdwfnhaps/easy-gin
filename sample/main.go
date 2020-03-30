@@ -14,7 +14,8 @@ import (
 func main() {
 
 	//创建应用程序 使用配置文件
-	r := easygin.New("conf/config.toml")
+	//r := easygin.New("conf/config.toml")
+	r := easygin.Default("conf/config.toml")
 
 	//使用logrus日志组件
 	//指定api路径规则才记录日志

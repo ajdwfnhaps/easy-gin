@@ -2,10 +2,26 @@ package middleware
 
 import (
 	"fmt"
+	"net/http"
 	"strings"
 
+	"github.com/ajdwfnhaps/easy-gin/response"
 	"github.com/gin-gonic/gin"
 )
+
+// NoMethodHandler 未找到请求方法的处理函数
+func NoMethodHandler() gin.HandlerFunc {
+	return func(c *gin.Context) {
+		response.ErrResponse(c, http.StatusMethodNotAllowed, "未找到请求方法的处理函数")
+	}
+}
+
+// NoRouteHandler 未找到请求路由的处理函数
+func NoRouteHandler() gin.HandlerFunc {
+	return func(c *gin.Context) {
+		response.ErrResponse(c, http.StatusNotFound, "未找到请求路由的处理函数")
+	}
+}
 
 // SkipperFunc 定义中间件跳过函数
 type SkipperFunc func(*gin.Context) bool
