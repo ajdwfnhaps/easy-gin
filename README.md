@@ -173,30 +173,19 @@ max_age = 7200
 ```
 
 详细可参考[测试用例](sample/main.go)
+[集成应用参考](https://github.com/ajdwfnhaps/easy-go)
 
 **运行效果如下图：**
 ![text](https://github.com/ajdwfnhaps/easy-gin/blob/master/pics/swagger.png)
 
-### docker 部署
-1. 执行build-linux-amd64.bat,可在windows系统下交叉编译发布linux amd64架构的二进制文件
-2. 上传的相应linux服务器相应目录
-3. docker run
-
-```
-docker run --privileged=true --name easy-gin-demo -p 8078:8078 -v /home/mwr/go-prj/easy-gin-demo:/app -w /app/  -e TZ='Asia/Shanghai' -d alpine:latest /app/./easy-gin
-```
 
 ### todo列表：
-- docker部署线上demo
 - response封装
 - 日志中间件完善(easy-logrus)
 - 跨域配置
 - auth中间件开发
 - 集成swagger
 - 提供统一注册路由方法等。。。
-- orm集成(gorm, xorm)
-- nosql集成(redis, mongodb)
-- mq使用
 
 ### 扩展
 - easy-logrus包
