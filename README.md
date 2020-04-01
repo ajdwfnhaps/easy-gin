@@ -190,7 +190,8 @@ max_age = 7200
 ### 扩展
 - easy-logrus包
 - easy-tool包
-- mqtt包
-- tcp server包
+- easy-mqtt包
+- easy-tcp-server包
+- easy-gorm包
 - 服务治理相关包
 - Golang学习文档整理.bk
